@@ -11,7 +11,10 @@ public class Armor{
     }
 
     public void genArmor(Character user, int durability, int def){
-        user.effDefence(def);
-        user.rmStamina(-durability);
+    System.out.println("==========================================================================");
+    System.out.println("| " + user.getName() + " dons new armor. The metal gleams with ancient runes.                |");
+    System.out.println("==========================================================================");
+    user.effDefence(def);
+    user.rmStamina(-durability);
     }
 }

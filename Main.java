@@ -12,7 +12,7 @@ public class Main{
         };
 
         characters.Character[] villains = {
-            new Lucifer("Lucifer", 120, 100, 200, 50),
+            new Lucifer("Lucifer", 100, 100, 200, 50),
             new Boss("Copernilius", 200, 80,70,130)
         };
 

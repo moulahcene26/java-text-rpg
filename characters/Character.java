@@ -28,24 +28,30 @@ public abstract class Character {
         return this.stamina > 0;
     }
     public void takeDamage(double damage) {
-        setHealth(getHealth() - (int) (damage * Math.max(0.0, 1 - (double) getDefence()/100)));
-        setDefence((int)(Math.max(0, getDefence() - damage/2)));
+    int actualDamage = (int) (damage * Math.max(0.0, 1 - (double) getDefence()/100));
+    setHealth(getHealth() - actualDamage);
+    setDefence((int)(Math.max(0, getDefence() - damage/2)));
+    System.out.println("| " + getName() + " suffers " + actualDamage + " damage! Their defense weakens.                  |");
     }
     public void rmStamina(int amount){
-        setStamina(getStamina() - amount);
+    setStamina(getStamina() - amount);
+    System.out.println("| " + getName() + "'s stamina is now " + getStamina() + ".                                         |");
     }
     abstract public void attack(Character target, Character friend, Character[] targets);
 
     public void effAttack(int strength){
-        setAttackPower(getAttackPower() + strength);
+    setAttackPower(getAttackPower() + strength);
+    System.out.println("| " + getName() + "'s attack power increases to " + getAttackPower() + ".                          |");
     }
 
     public void effDefence(int resistance){
-        setDefence(getDefence() + resistance);
+    setDefence(getDefence() + resistance);
+    System.out.println("| " + getName() + "'s defense rises to " + getDefence() + ".                                       |");
     }
 
     public void effHealth(int regen){
-        setHealth(getHealth() + regen);
+    setHealth(getHealth() + regen);
+    System.out.println("| " + getName() + "'s health is restored to " + getHealth() + ".                                   |");
     }
 
     public String getName(){
@@ -88,6 +94,11 @@ public abstract class Character {
         this.defence = defence;
     }
 
-
+    public void betweenTurns() {
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        Thread.currentThread().interrupt(); 
+    }}
 
 }

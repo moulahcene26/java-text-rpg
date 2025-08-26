@@ -9,19 +9,22 @@ public class GameEngine{
         Battle battle = new Battle(heroes, villains);
         battle.startBattle();
         if (allDead(heroes)) {
-            System.out.println("Villains WIN !");
+            System.out.println("==========================================================================");
+            System.out.println("| The villains stand victorious! Darkness claims the land...               |");
+            System.out.println("==========================================================================");
         } else if (allDead(villains)) {
-            System.out.println("Heroes WIN !");
-            }
+            System.out.println("==========================================================================");
+            System.out.println("| The heroes triumph! Light returns to the world!                         |");
+            System.out.println("==========================================================================");
         }
-    
-    
-    private boolean allDead(Character[] characters) {
-            for (Character c : characters) {
-                if (c.isAlive()) {
-                    return false;
-                }
-            }
-            return true;
+    }
+
+    private boolean allDead(Character[] players){
+        for(Character p : players){
+            if(p.isAlive()) {
+                return false;
+            } 
         }
+        return true;
+    }
 }

@@ -11,21 +11,34 @@ public class Boss extends Character {
 
 	
 	public void specialAttack(Character[] targets){
+		System.out.println("| " + this.getName() + " towers over the battlefield, eyes glowing ominously!                        |");
+		betweenTurns();
 		if(hasStamina()) { for (Character target : targets) {
+			System.out.println("| " + this.getName() + " extends a hand toward " + target.getName() + ", draining their life force!         |");
 			target.setHealth(target.getHealth() - 50);
+			betweenTurns();
 		}
 		setStamina(getStamina() - 50);
+		System.out.println("| " + this.getName() + " bellows: 'You are powerless before me!'                                      |");
+		System.out.println("| Special Move: The Drain unleashed!                                                                  |");
+		betweenTurns();
 	} else {
-			System.out.println(this.getName()+" has ran out of Stamina.");
+			System.out.println("| " + this.getName() + " is too weak to perform The Drain and stumbles.                              |");
+			betweenTurns();
 		}
 	}
 
 	public void bossHeal(){
+		System.out.println("| " + this.getName() + " roars, summoning dark energy to heal wounds!                                |");
+		betweenTurns();
 		if(hasStamina()) { 
 			this.setHealth(this.getHealth() + 30);
 			setStamina(getStamina() - 10);
+			System.out.println("| " + this.getName() + " regenerates with unnatural speed! Boss Heal successful!                     |");
+			betweenTurns();
 		}  else {
-			System.out.println(this.getName()+" has ran out of Stamina.");
+			System.out.println("| " + this.getName() + " is out of stamina and cannot heal.                                          |");
+			betweenTurns();
 		}
 	}
 
