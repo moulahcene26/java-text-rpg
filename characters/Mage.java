@@ -1,5 +1,7 @@
 package characters;
 
+import utils.Randomizer;
+
 
 public class Mage extends Character {
 
@@ -16,9 +18,10 @@ public class Mage extends Character {
 	
 
 	public void mageAttackPoison(Character target, int time){
+		double damage = 7.57 * Math.pow(this.getAttackPower(), 0.6);
 		if(hasStamina()) { if(magePoisonTime >= time){
 			for (int i = time; i > 0; i--){
-				target.takeDamage(5);
+				target.takeDamage(damage);
 				System.out.println("Poisoned  !");
 			}
 			magePoisonTime -= time;
@@ -48,5 +51,14 @@ public class Mage extends Character {
 			System.out.println(this.getName()+" has ran out of Stamina.");
 		}
 	}
+	@Override
+	public void attack(Character target, Character friend, Character[] targets) { //choose between //mage should be 1, warrior 0
+        int move = Randomizer.getRandomInt(0, 1);
+		if(move == 1){
+			this.mageAttackPoison(target, 10);
+		} else {
+			this.mageFriendlyHeal(friend, 10);
+		}
+    }
 
 }

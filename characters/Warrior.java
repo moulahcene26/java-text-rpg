@@ -6,15 +6,18 @@ public class Warrior extends Character {
 		super(name, health, stamina, attackPower, defence);
 	}
 
-	
-	public void heavyattack(Character target) {
+	@Override
+	public void attack(Character target, Character friend, Character[] targets) { // heavy attack
+		double damage = 7.57 * Math.pow(this.getAttackPower(), 0.6);
 		if(hasStamina()) {
-			target.takeDamage(30);
+			target.takeDamage(damage);
 			setStamina(getStamina() - 40);
 		} else {
 			System.out.println(this.getName()+" has ran out of Stamina.");
 		}
 	}
+
+
 
 
 }

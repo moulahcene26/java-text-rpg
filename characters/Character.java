@@ -27,21 +27,14 @@ public abstract class Character {
     public boolean hasStamina() {
         return this.stamina > 0;
     }
-    public void takeDamage(int damage) {
+    public void takeDamage(double damage) {
         setHealth(getHealth() - (int) (damage * Math.max(0.0, 1 - (double) getDefence()/100)));
-        setDefence(Math.max(0, getDefence() - damage/2));
+        setDefence((int)(Math.max(0, getDefence() - damage/2)));
     }
     public void rmStamina(int amount){
         setStamina(getStamina() - amount);
     }
-    public void attack(Character target) {
-        if(hasStamina()) {
-            target.setHealth(target.getHealth() - getAttackPower());
-            setStamina(getStamina() - 5);
-        } else {
-            System.out.println(this.getName()+" has ran out of Stamina.");
-        }
-    }
+    abstract public void attack(Character target, Character friend, Character[] targets);
 
     public void effAttack(int strength){
         setAttackPower(getAttackPower() + strength);
